@@ -1,0 +1,47 @@
+@charset "utf-8";
+body{font:14px "微软雅黑";color:#333;background: #fff;}
+body,p,ol,ul,li,h1,h2,h3,h4,h5,h6,dl,dt,dd,pre,input,table,tr,td,figure,form{margin: 0;padding: 0;}
+ol,ul,li{list-style:none;}
+
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+.helper-banner{position: fixed; right: 0px; bottom: 200px; z-index: 1000; }
+.helper-banner > li{background: #179bd7; color: #FFF; height: 55px; position: relative; padding: 5px 10px; width: 50px; margin-bottom: 1px; cursor: pointer; }
+.helper-banner > li p.fankui{padding-top: 5px; }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.helper-banner > li p.fankui{padding-top: 7px; }
+}
+.helper-banner > li > i{height: 22px; display: block; margin-top: 4px; }
+.helper-banner > li > i.qq{margin-left: 2px; margin-top: 5px;}
+.helper-banner > li > i.mobile{margin-left: 8px; margin-top: 5px;}
+.helper-banner > li > i.weixin{margin-top: 10px; background-repeat: no-repeat;}
+.helper-banner > li > p{font-size: 12px; text-align:center;padding-top: 7px; }
+.helper-banner > li.hover-active, .helper-banner >li:hover{background: #51a1f0; }
+.helper-banner .detail-middle{display:none; position: absolute; z-index: 1000; right: 50px; bottom: 0px; border: 1px solid #e8e8e8; background: #FFF; padding:0 17px; overflow: visible; color: #8c8c8c; white-space:nowrap; height: 100%; }
+.helper-banner > li.hover-active .detail-middle, .helper-banner > li:hover .detail-middle{display: block; }
+.helper-banner > li .detail-middle.mobile > h3{margin: 10px 0 0; font-size: 13px; color: #666; font-weight: normal; }
+.helper-banner > li .detail-middle.mobile > p{margin-bottom: 10px; color: #6ec237; font-size: 18px; }
+.helper-banner > li .detail-middle.email > h3{margin: 10px 0 5px; font-size: 13px; color: #666; font-weight: normal; }
+.helper-banner > li .detail-middle.email > p{margin-bottom: 10px; color: #333; font-size: 13px; }
+.helper-banner > li.hover-active .right-arrow, .helper-banner > li:hover .right-arrow{display: block; }
+.helper-banner > li > i.right-arrow{display:none; border: 5px solid #51a1f0; border-left: 5px solid #FFF; height: 0; width: 0; position: absolute; left: -1px; top: 50%; margin-top: -5px; z-index: 1001; }
+.helper-banner > li i.top-arrow{display:block; }
+.helper-banner > li .top{display: none; }
+.helper-banner > li.hover-active i.top-arrow, .helper-banner > li:hover i.top-arrow{display:none; }
+.helper-banner > li.hover-active .top, .helper-banner > li:hover .top{display:block; font-size: 13px; line-height: 45px; }
+.helper-banner > li .top-arrow{border: 10px solid #179bd7; border-bottom: 10px solid #FFF; height: 0; width: 0; position: absolute; top: 50%; left: 50%; margin-left: -10px; margin-top: -15px; }
+.helper-banner > li .detail-middle.weixin-wraper {height: 175px; padding: 15px 15px 10px; }
+.helper-banner > li .detail-middle.weixin-wraper > p{font-size: 13px; text-align: center; line-height: 20px; }
+.helper-banner > li .detail-middle.weixin-wraper > img{width: 135px; height: 135px; }
+
+
+
+
+
+
+
+
+

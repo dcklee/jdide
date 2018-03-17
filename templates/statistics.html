@@ -1,0 +1,234 @@
+{% extends "userpanel_site_base.html" %}
+{% load static from staticfiles %}
+{% load pinax_blog_tags %}
+{% load account_tags %}
+{% load bootstrap %}
+{% load i18n %}
+{% load pinax_announcements_tags %}
+{% block head_title %}JD IDE{% endblock %}
+
+{% block body_class %}flat{% endblock %}
+{% block body_extra_attributes %}data-color="blue"{% endblock %}
+
+{% block body %}
+				<div id="breadcrumb">
+					<a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Panel</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 center" style="text-align: center;">
+							<ul class="quick-actions">
+                                {% if perms.blog.add_post %}<li>
+									<a href="{">
+										<i class="icon-enlingopost"></i>
+										Load New Source Code
+									</a>
+								</li>{% endif %}
+{#								<li>#}
+{#									<a href="#">#}
+{#										<i class="icon-shopping-bag"></i>#}
+{#										Manage Orders#}
+{#									</a>#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">#}
+{#										<i class="icon-database"></i>#}
+{#										Manage DB#}
+{#									</a>#}
+{#								</li>#}
+								<li>
+									<a href="{% url "userpanel:vehicle" %}">
+										<i class="icon-client"></i>
+										Your Vehicle
+									</a>
+								</li>
+{#								<li>#}
+{#									<a href="#">#}
+{#										<i class="icon-lock"></i>#}
+{#										Security#}
+{#									</a>#}
+{#								</li>#}
+							</ul>
+						</div>
+					</div>
+					<br />
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-lg-6">
+                            <div class="widget-box">
+                                <div class="widget-title">
+                                    <h5>Code Configuration</h5>
+                                </div>
+                                <div class="widget-content">
+                                    <input type="text" class="form-control" placeholder="Please Enter your Vehicle's 'Add' method Highlighted in Blue" id="mycode" />
+                                </div>
+                            </div>
+
+                            <div class="widget-box">
+                                <div class="widget-title">
+                                    <h5>Entered Codes</h5>
+                                </div>
+                                <div class="widget-content nopadding">
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Entry</th>
+                                                <th>Source Code</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1/20</td>
+                                                <td>
+                                                    <p>#!/usr/bin/env python3</p>
+                                                    <p># -*- coding: utf-8 -*-</p>
+                                                    <p>"""</p>
+                                                    <p>Created on Sun Jun 25 10:44:24 2017</p>
+                                                    <p>@author: wroscoe</p>
+                                                    <p>"""</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2/20</td>
+                                                <td><p>import time</p>
+                                                    <p>from threading import Thread</p>
+                                                    <p>from .memory import Memory</p>
+                                                   </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3/20</td>
+                                                <td><p>class Vehicle():</p>
+                                                    <p>&nbsp;def __init__(self, mem=None):</p>
+                                                    <p>&nbsp;&nbsp;if not mem:</p>
+                                                    <p>&nbsp;&nbsp;self.mem = mem</p>
+                                                    <p>&nbsp;&nbsp;self.on = True</p>
+                                                    <p>&nbsp;&nbsp;self.threads = []</p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="widget-content">
+								<button class="btn btn-dark-green btn-block btn-lg">Update Vehicle</button>
+							</div>
+
+						</div>
+						{% announcements as announcement_list %}
+                        {% if announcement_list %}
+                                {% for announcement in announcement_list %}
+                        <div class="col-xs-12 col-sm-6">
+							<div class="widget-box">
+                                <div class="widget-title"><span class="icon"><i class="fa fa-comment"></i></span><h5>Enlingo Post of the Week Competition Quiz</h5></div>
+                                    <div class="widget-content">
+                                            <form action="" method="post" class="form-horizontal" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                                                {% csrf_token %}
+                                                {% if redirect_field_value %}
+                                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                                {% endif %}
+                                                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                                <input type="hidden" name="announcement_id" value="{{ announcement.pk }}" />
+                                                <div class="form-group">
+                                                    <span class="label label-info col-sm-3 col-md-3 col-lg-2">Question</span>
+                                                    <div class="col-sm-9 col-md-9 col-lg-10">
+                                                        {{ announcement.content }}<br />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <span class="label label-info col-sm-3 col-md-3 col-lg-2">Post</span>
+                                                    <div class="col-sm-9 col-md-9 col-lg-10">
+                                                        <textarea rows="5" class="form-control" name="description" maxlength="140" placeholder="Maximum 140 characters here..."></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button type="submit" class="btn btn-primary btn-sm">Save</button></a>
+                                                </div>
+                                            </form>
+                                    </div>
+							</div>
+
+
+						</div>{% endfor %}
+                    {% endif %}
+
+					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-th"></i>
+								</span>
+								<h5>New Vehicle Codes</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Entry</th>
+											<th>Source Code</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>4/20</td>
+											<td><div class="alert alert-info">
+                                                <p>&nbsp;def add(self, part, inputs=[], outputs=[],</p>
+                                                <p>&nbsp;&nbsp;threaded=False, run_condition=None):</p>
+                                                <p>&nbsp;&nbsp;"""</p>
+                                                <p>&nbsp;&nbsp;Method to add a part to the vehicle drive loop.</p>
+                                                <p>&nbsp;&nbsp;Parameters</p>
+                                                <p>&nbsp;&nbsp;&nbsp;inputs : list</p>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;Channel names to get from memory.</p>
+                                                <p>&nbsp;&nbsp;ouputs : list</p>
+                                                <p>&nbsp;&nbsp;&nbsp;Channel names to save to memory.</p>
+                                                <p>&nbsp;&nbsp;threaded : boolean</p>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;If a part should be run in a separate thread..</p>
+                                                <p>&nbsp;&nbsp;"""</p>
+                                                <p>&nbsp;&nbsp;p = part.</p>
+                                                <p>&nbsp;&nbsp;print('Adding part {}.'.format(p.__class__.__name__))</p>
+                                                <p>&nbsp;&nbsp;entry={}</p>
+                                                <p>&nbsp;&nbsp;entry['part'] = p</p>
+                                                <p>&nbsp;&nbsp;entry['inputs'] = inputs</p>
+                                                <p>&nbsp;&nbsp;entry['outputs'] = outputs</p>
+                                                <p>&nbsp;&nbsp;entry['run_condition'] = run_condition</p>
+                                                <p>&nbsp;&nbsp;if threaded:</p>
+                                                <p>&nbsp;&nbsp;&nbsp;t = Thread(target=part.update, args=())</p>
+                                                <p>&nbsp;&nbsp;&nbsp;t.daemon = True</p>
+                                                <p>&nbsp;&nbsp;&nbsp;entry['thread'] = t</p>
+                                                <p>&nbsp;&nbsp;self.parts.append(entry)</p></div>
+                                            </td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="row">
+{#						<div class="col-xs-12">#}
+{#							<div class="widget-box widget-calendar">#}
+{#								<div class="widget-title"><span class="icon"><i class="fa fa-calendar"></i></span><h5>Calendar</h5></div>#}
+{#								<div class="widget-content nopadding">#}
+{#									<div class="calendar"></div>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+					</div>
+
+				</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#id_username').focus();
+        });
+
+        $('#mycode').bind("cut copy paste",function(e) {
+            e.preventDefault();
+        });
+    </script>
+    <script src="//enlingo.oss-cn-shenzhen.aliyuncs.com/site_media/static/assets/js/unicorn.form_common.js"></script>
+{% endblock %}

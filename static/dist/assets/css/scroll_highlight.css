@@ -1,0 +1,7 @@
+ul.slidenav li {
+  color: #000;
+}
+ul.slidenav li.selected {
+  color: red;
+}
+

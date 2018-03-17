@@ -1,0 +1,5 @@
+Plugins:
+- OWL Carousel: http://www.owlcarousel.owlgraphic.com/
+
+Misc:
+- Font Awesome: http://fortawesome.github.io/Font-Awesome/
