@@ -44,6 +44,14 @@
 						</label>
 					</div>
 					<a href="{% url "account_password_reset" %}" title="#" class="forgotPassword">Forgot your password?</a>
+                      <div class="input">
+                          <select id = "urole" name="urole" class="form-control">
+                            <option disabled="">- Difficulty -</option>
+                            <option selected="">Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                          </select>
+                      </div>
 					<button type="submit" class="btn btn-lg btn-yellow btn-effect">Login</button>
 				</form>
 			</div>
